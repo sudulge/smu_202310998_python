@@ -20,10 +20,22 @@ def read_single_digit(integer):
     elif integer == 9:
         return '구'
     
-def read_number(integer):
-    print(read_single_digit(int(integer[0])), end=' ')
-    print(read_single_digit(int(integer[1])), end=' ')
-    print(read_single_digit(int(integer[2])))
+def read_number(num):
+    num = str(num)
 
-number = input('세 자리 정수 입력: ')
-read_number(number)
+    result = ''
+
+    result += f"{read_single_digit(int(num[0]))} "
+
+    if len(num) == 2:
+        result += f"{read_single_digit(int(num[1]))}"
+
+    elif len(num) == 3:
+        result += f"{read_single_digit(int(num[1]))} "
+        result += f"{read_single_digit(int(num[2]))}"
+
+    return result
+
+number = int(input('세 자리 정수 입력: '))
+result = read_number(number)
+print(result)
